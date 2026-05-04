@@ -20,7 +20,7 @@ let currentThought = 0;
 function init() {
     const today = new Date();
     // Activation logic. CHANGE 4 to 5 BEFORE SLEEP.
-    if (today.getDate() === 4) {
+    if (today.getDate() === 5) {
         document.getElementById('anniversary-overlay').style.display = 'flex';
         // Add the floating images to the green opening screen
         placeSpecialFloaters();
