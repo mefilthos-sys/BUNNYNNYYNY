@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Our Space</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="anniversary-overlay" style="display:none;">
+        <div class="overlay-content">
+            <h1>Happy anniversary asshole</h1>
+            <button onclick="closeOverlay()">Enter Our Space</button>
+        </div>
+    </div>
+
+    <div class="main-wrapper">
+        <header>
+            <h2 id="timer">Counting...</h2>
+        </header>
+
+        <nav>
+            <button class="nav-btn active" onclick="showSection('home')">Home</button>
+            <button class="nav-btn" onclick="showSection('gallery')">Archive</button>
+            <button class="nav-btn" onclick="showSection('notes')">Future</button>
+        </nav>
+
+        <section id="home" class="content-section active">
+            <div class="card">
+                <h3>8 Months</h3>
+                <p id="thought">Checking data...</p>
+                <button onclick="newThought()">Next Memory</button>
+            </div>
+        </section>
+
+        <section id="gallery" class="content-section" style="display:none;">
+            <h3>Our Photos</h3>
+            <div class="photo-grid">
+                <p>Images go here.</p>
+            </div>
+        </section>
+
+        <section id="notes" class="content-section" style="display:none;">
+            <h3>Our Future</h3>
+            <div class="card">
+                <p>Next steps pending...</p>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
