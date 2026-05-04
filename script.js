@@ -14,37 +14,31 @@ let currentThought = 0;
 
 function init() {
     const today = new Date();
-    // Activation logic for the 5th
     if (today.getDate() === 5) {
         document.getElementById('anniversary-overlay').style.display = 'flex';
     }
     placeStickers();
-    nextThought();
+    // Start with the first thought immediately
+    document.getElementById('thought-text').innerText = thoughts[0];
 }
 
-function nextThought() {
-    document.getElementById('thought-text').innerText = thoughts[currentThought];
+window.nextThought = function() {
     currentThought = (currentThought + 1) % thoughts.length;
-}
+    document.getElementById('thought-text').innerText = thoughts[currentThought];
+};
 
 function placeStickers() {
     const container = document.getElementById('sticker-layer');
-    container.innerHTML = ''; // Clear old stickers on section change
+    if (!container) return;
+    container.innerHTML = ''; 
     
-    // Generates 12 random stickers across the screen
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 10; i++) {
         const img = document.createElement('img');
         img.src = stickerFiles[Math.floor(Math.random() * stickerFiles.length)];
         img.className = 'sticker';
-        
-        // Random positioning
-        img.style.top = Math.random() * 85 + 'vh';
-        img.style.left = Math.random() * 85 + 'vw';
-        
-        // Random tilt left or right
-        const tilt = Math.random() * 30 - 15; 
-        img.style.transform = `rotate(${tilt}deg)`;
-        
+        img.style.top = Math.random() * 80 + 'vh';
+        img.style.left = Math.random() * 80 + 'vw';
+        img.style.transform = `rotate(${Math.random() * 40 - 20}deg)`;
         container.appendChild(img);
     }
 }
@@ -57,11 +51,9 @@ function showSection(id) {
     document.querySelectorAll('.content-section').forEach(s => s.style.display = 'none');
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(id).style.display = 'block';
-    
-    // Re-shuffle stickers when moving to a new section
     placeStickers();
-    
     if(event) event.currentTarget.classList.add('active');
 }
 
 window.onload = init;
+
