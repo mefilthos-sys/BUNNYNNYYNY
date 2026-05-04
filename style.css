@@ -1,79 +1,58 @@
 :root {
-    /* Main Site Theme (Pinkish Red) */
     --bg-main: #2a0010;
     --card-bg: #4a041f;
     --accent: #ff477e;
     --text-primary: #fff0f5;
-    
-    /* NEW Overlay Theme (Forest Green & Beige) */
     --forest-green: #1b3022;
     --deep-moss: #0c1a11;
     --beige: #f5f5dc;
-    --gold: #f1c40f; 
 }
 
-body { 
-    background-color: var(--bg-main); 
-    color: var(--text-primary); 
-    font-family: 'Georgia', serif; 
-    margin: 0; 
-    text-align: center; 
-    overflow-x: hidden; 
-}
+body { background: var(--bg-main); color: var(--text-primary); font-family: 'Georgia', serif; margin: 0; text-align: center; overflow-x: hidden; }
 
-/* 1. ANNIVERSARY OVERLAY (Forest Green & Beige) */
+/* 1. ANNIVERSARY OVERLAY (Forest Green & Stickers) */
 #anniversary-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    /* Forest Green Gradient */
     background: linear-gradient(135deg, var(--forest-green) 0%, var(--deep-moss) 100%);
-    z-index: 9999; 
-    display: flex; flex-direction: column;
-    justify-content: center; align-items: center;
+    z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    overflow: hidden; /* Important for scatter logic */
 }
 
-#anniversary-overlay h1 { 
-    color: var(--beige); /* Beige text */
-    font-size: 2.2rem; 
-    padding: 20px; 
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+/* NEW: Background layer just for overlay stickers */
+#overlay-sticker-layer {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 10000; /* Behind the text, in front of background */
+    opacity: 0.5; /* Makes them subtler in the opening */
 }
 
-.enter-btn {
-    background-color: var(--gold);
-    color: #1b3022; /* Forest green text for the button */
+.overlay-content { position: relative; z-index: 10001; } /* Keeps text in front */
+
+#anniversary-overlay h1 { color: var(--beige); font-size: 2.2rem; padding: 20px; text-transform: uppercase; letter-spacing: 4px; }
+
+/* NEW: White Enter Button */
+.enter-btn-white {
+    background-color: #ffffff;
+    color: var(--deep-moss);
     border: none;
-    padding: 15px 40px;
-    font-size: 1rem;
+    padding: 15px 45px;
+    font-size: 1.1rem;
     font-weight: bold;
-    border-radius: 30px;
-    text-transform: uppercase;
+    border-radius: 40px;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    text-transform: uppercase;
 }
 
-/* 2. MAIN NAVIGATION (Berry) */
-nav { 
-    display: flex; justify-content: space-around; 
-    background-color: #3d0319; 
-    padding: 15px 0; 
-    position: sticky; top: 0; 
-    z-index: 100; 
-    border-bottom: 2px solid var(--accent);
-}
+/* 2. MAIN SITE STICKERS & NAV */
+#sticker-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
 
+.sticker { position: absolute; width: 60px; border-radius: 8px; opacity: 0.7; }
+
+nav { display: flex; justify-content: space-around; background: #3d0319; padding: 15px 0; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid var(--accent); }
 .nav-btn { background: none; border: none; color: #ffb6c1; font-weight: bold; font-size: 0.8rem; }
 .nav-btn.active { color: var(--accent); }
 
-/* 3. STICKERS & CARDS */
-#sticker-layer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
-.sticker { position: absolute; width: 60px; border-radius: 8px; opacity: 0.7; }
-
 .content-section { padding: 25px; position: relative; z-index: 10; }
 .card { background: var(--card-bg); padding: 25px; border-radius: 20px; margin-bottom: 20px; border: 1px solid #630629; }
-
-.big-button, .next-btn { background: var(--accent); color: white; border: none; padding: 12px 28px; border-radius: 30px; font-weight: bold; cursor: pointer; text-decoration: none; }
-
+.big-button, .next-btn { background: var(--accent); color: white; border: none; padding: 12px 28px; border-radius: 30px; font-weight: bold; cursor: pointer; }
 audio { width: 100%; filter: invert(0.9) sepia(1) hue-rotate(300deg) saturate(3); }
-
