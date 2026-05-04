@@ -14,7 +14,7 @@ let currentThought = 0;
 
 function init() {
     const today = new Date();
-    if (today.getDate() === 5) {
+    if (today.getDate() === 4) {
         document.getElementById('anniversary-overlay').style.display = 'flex';
     }
     placeStickers();
