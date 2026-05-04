@@ -1,6 +1,6 @@
 function init() {
     const today = new Date();
-    // Logic for the 5th
+    // Activation logic for the 5th
     if (today.getDate() === 5) {
         document.getElementById('anniversary-overlay').style.display = 'flex';
     }
@@ -18,3 +18,4 @@ function showSection(id) {
 }
 
 window.onload = init;
+
