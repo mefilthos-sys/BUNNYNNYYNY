@@ -14,11 +14,11 @@ let currentThought = 0;
 
 function init() {
     const today = new Date();
+    // SET TO 4 FOR TESTING. CHANGE TO 5 BEFORE YOU SLEEP.
     if (today.getDate() === 4) {
         document.getElementById('anniversary-overlay').style.display = 'flex';
     }
     placeStickers();
-    // Start with the first thought immediately
     document.getElementById('thought-text').innerText = thoughts[0];
 }
 
@@ -31,13 +31,12 @@ function placeStickers() {
     const container = document.getElementById('sticker-layer');
     if (!container) return;
     container.innerHTML = ''; 
-    
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 12; i++) {
         const img = document.createElement('img');
         img.src = stickerFiles[Math.floor(Math.random() * stickerFiles.length)];
         img.className = 'sticker';
-        img.style.top = Math.random() * 80 + 'vh';
-        img.style.left = Math.random() * 80 + 'vw';
+        img.style.top = Math.random() * 85 + 'vh';
+        img.style.left = Math.random() * 85 + 'vw';
         img.style.transform = `rotate(${Math.random() * 40 - 20}deg)`;
         container.appendChild(img);
     }
@@ -47,13 +46,18 @@ function closeOverlay() {
     document.getElementById('anniversary-overlay').style.display = 'none';
 }
 
-function showSection(id) {
+window.showSection = function(id) {
     document.querySelectorAll('.content-section').forEach(s => s.style.display = 'none');
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(id).style.display = 'block';
     placeStickers();
-    if(event) event.currentTarget.classList.add('active');
-}
+    // Fixed: handle navigation active state
+    const btns = document.querySelectorAll('.nav-btn');
+    btns.forEach(btn => {
+        if(btn.innerText.toLowerCase() === id.replace('-', ' ').toLowerCase()) {
+            btn.classList.add('active');
+        }
+    });
+};
 
 window.onload = init;
-
