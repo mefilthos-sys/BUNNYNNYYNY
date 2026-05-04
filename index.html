@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Our Space</title>
+    <title>Bunny</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,35 +16,46 @@
     </div>
 
     <div class="main-wrapper">
-        <header>
-            <h2 id="timer">Counting...</h2>
-        </header>
-
         <nav>
             <button class="nav-btn active" onclick="showSection('home')">Home</button>
             <button class="nav-btn" onclick="showSection('gallery')">Archive</button>
-            <button class="nav-btn" onclick="showSection('notes')">Future</button>
+            <button class="nav-btn" onclick="showSection('overthinking')">Overthinking</button>
+            <button class="nav-btn" onclick="showSection('miss-you')">Miss You</button>
         </nav>
 
         <section id="home" class="content-section active">
             <div class="card">
-                <h3>8 Months</h3>
-                <p id="thought">Checking data...</p>
-                <button onclick="newThought()">Next Memory</button>
+                <h3>Our Space</h3>
+                <p>No timers, no future plans, just us. Everything you need is in the tabs above.</p>
             </div>
         </section>
 
         <section id="gallery" class="content-section" style="display:none;">
-            <h3>Our Photos</h3>
+            <h3>Archive</h3>
             <div class="photo-grid">
-                <p>Images go here.</p>
+                <p>Photos will appear here once added to the assets folder.</p>
             </div>
         </section>
 
-        <section id="notes" class="content-section" style="display:none;">
-            <h3>Our Future</h3>
+        <section id="overthinking" class="content-section" style="display:none;">
             <div class="card">
-                <p>Next steps pending...</p>
+                <h3>For your overthinking</h3>
+                <p>Listen to this. Take a breath. I've got you.</p>
+                <audio controls src="assets/overthinking.mp3"></audio>
+            </div>
+        </section>
+
+        <section id="miss-you" class="content-section" style="display:none;">
+            <h3>When you miss me</h3>
+            <div class="audio-list">
+                <div class="card">
+                    <p>Voice Note 1</p>
+                    <audio controls src="assets/yes.mp3"></audio>
+                </div>
+                <div class="card">
+                    <p>Voice Note 2</p>
+                    <audio controls src="assets/yap.mp3"></audio>
+                </div>
             </div>
         </section>
     </div>
